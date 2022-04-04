@@ -1,8 +1,11 @@
+
+const mySecret = process.env['DISCORD_BOT_TOKEN']
 const Discord = require("discord.js");
 const { prefix, token } = require("./config.json");
 const ytdl = require("ytdl-core");
 
 const client = new Discord.Client();
+const keepAlive = require("./server");
 
 client.on("ready", () => {
     client.user.setActivity("com o cu do tuti", {
@@ -148,4 +151,6 @@ function play(guild, song) {
   serverQueue.textChannel.send(`vo toca **${song.title}** emmmmmmm`);
 }
 
-client.login(token);
+keepAlive();
+
+client.login(process.env.DISCORD_BOT_TOKEN);
